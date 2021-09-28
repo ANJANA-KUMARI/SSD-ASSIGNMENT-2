@@ -1,9 +1,9 @@
-// const { OAuth2Client } = require('google-auth-library');
+const { OAuth2Client } = require('google-auth-library');
 const credentials = require('../client_secret.json');
 const { google } = require('googleapis');
 const { file } = require('googleapis/build/src/apis/file');
 
-// const client = new OAuth2Client("959000517651-tpaevdgmts4gtftppmj118ci0musjg44.apps.googleusercontent.com");
+const client = new OAuth2Client("128644511689-1sdmau2gitdj3mbtms7g0s67lh6g75h6.apps.googleusercontent.com");
 
 const SCOPES = ['https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/drive.metadata.readonly https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.readonly'];
 
@@ -14,16 +14,16 @@ const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_u
 
 
 exports.googleLogin = (req, res) => {
-  // const { tokenId } = req.body;
+  const { tokenId } = req.body;
 
-  // client.verifyIdToken({ idToken: tokenId, audience: "959000517651-tpaevdgmts4gtftppmj118ci0musjg44.apps.googleusercontent.com" }).then(response => {
-  //     const { email_verified, name, email } = response.payload;
-  //     console.log(response.payload);
-  //     if(email_verified) {
-  //     } else {
-  //     }
-  // })
-  //   console.log(tokenId);  
+  client.verifyIdToken({ idToken: tokenId, audience: "128644511689-1sdmau2gitdj3mbtms7g0s67lh6g75h6.apps.googleusercontent.com" }).then(response => {
+      const { email_verified, name, email } = response.payload;
+      console.log(response.payload);
+      if(email_verified) {
+      } else {
+      }
+  })
+    console.log(tokenId);  
 }
 
 exports.getGoogleAuthUrl = (req, res) => {
