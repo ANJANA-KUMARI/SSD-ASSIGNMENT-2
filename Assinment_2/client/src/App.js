@@ -1,6 +1,6 @@
-import './App.css';
-import PhotosSelectionSide from './component/photosSelectionSide';
-import PostPostedSide from './component/postPostedSide';
+import './App.css'
+import GoogleSide from './component/googleSide'
+import PostPostedSide from './component/postPostedSide'
 
 function App() {
   return (
@@ -8,12 +8,11 @@ function App() {
       <h1>Upload Google Profile on Facebook</h1>
 
       <div className="components-wrapper position-center">
-        <PhotosSelectionSide />
+        <GoogleSide />
         <PostPostedSide />
       </div>
-
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
