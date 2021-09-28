@@ -13,7 +13,6 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  
 }
 
 .position-center {
@@ -44,7 +43,7 @@ h4 {
   display: flex;
   flex-direction: row;
   justify-content: center;
-} 
+}
 
 .img {
   width: 120px;
@@ -64,7 +63,7 @@ h4 {
   color: rgb(255, 255, 255);
   border: none;
   padding: 10px;
-  background: #4285F4;
+  background: #4285f4;
   font-weight: bold;
   border-radius: 2px;
   cursor: pointer;
@@ -74,7 +73,7 @@ h4 {
   color: rgb(255, 255, 255);
   border: none;
   padding: 10px;
-  background: #DB4437;
+  background: #db4437;
   font-weight: bold;
   border-radius: 2px;
   cursor: pointer;
@@ -84,11 +83,9 @@ h4 {
   color: rgb(255, 255, 255);
   border: none;
   padding: 10px;
-  background: #4267B2;
+  background: #4267b2;
   font-weight: bold;
   border-radius: 2px;
   cursor: pointer;
   margin-top: 50px;
 }
-
-
