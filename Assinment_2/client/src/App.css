@@ -1,5 +1,7 @@
 body {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  width: 100%;
+  height: 100%;
 }
 
 h1 {
@@ -11,28 +13,68 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  
 }
 
-.main-wrapper {
+.position-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.google-card-wrapper {
   background-color: rgb(218, 218, 218);
-  padding: 10px;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.facebook-card-wrapper {
+  background-color: rgb(218, 218, 218);
+  padding: 20px;
+  border-radius: 5px;
 }
 
 h4 {
   text-align: center;
+  margin: 0;
 }
 
-.btn-center {
+.center {
   display: flex;
   flex-direction: row;
   justify-content: center;
 } 
 
-.google-sign-in-btn {
+.img {
+  width: 120px;
+  height: 120px;
+  background-color: #a3a2a2;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.google-btn {
+  width: 200px;
+  margin-top: 35px;
+}
+
+.facebook-btn {
   color: rgb(255, 255, 255);
   border: none;
   padding: 10px;
   background: #4285F4;
+  font-weight: bold;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.remove-btn {
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 10px;
+  background: #DB4437;
   font-weight: bold;
   border-radius: 2px;
   cursor: pointer;
@@ -46,6 +88,7 @@ h4 {
   font-weight: bold;
   border-radius: 2px;
   cursor: pointer;
+  margin-top: 50px;
 }
 
 

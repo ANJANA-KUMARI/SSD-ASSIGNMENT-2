@@ -2,12 +2,12 @@ import React from 'react';
 
 function PostPostedSide() {
     return (
-        <div className="main-wrapper">
+        <div className="facebook-card-wrapper">
             <h4>Post photos on the Facebook</h4>
             <div className="">
 
             </div>
-            <div className="btn-center">
+            <div className="center">
                 <button className="facebook-login-btn">
                     Login with Facebook
                 </button>

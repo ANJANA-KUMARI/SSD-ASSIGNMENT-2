@@ -5,9 +5,9 @@ import PostPostedSide from './component/postPostedSide';
 function App() {
   return (
     <div className="">
-      <h1>Post Any Google Photo on the Facebook</h1>
+      <h1>Upload Google Profile on Facebook</h1>
 
-      <div className="components-wrapper">
+      <div className="components-wrapper position-center">
         <PhotosSelectionSide />
         <PostPostedSide />
       </div>
