@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import GoogleLogin from 'react-google-login';
 import axios from 'axios';
+// import { useHistory } from "react-router-dom";
 
 function PhotosSelectionSide() {
+
+    const [responsedUrl, setResponsedUrl] = useState("");
+    
+    // let history = useHistory();
 
     const responseSuccessGoogle = (res) => {
         console.log("Success");
@@ -13,6 +18,8 @@ function PhotosSelectionSide() {
         }).then(res => {
             console.log("Response: ");
             console.log(res.data);
+            setResponsedUrl(res.data);
+            // history.push(`/${res.data}`);
         })
     }
     

@@ -7,6 +7,6 @@ router.post('/login', googleLogin);
 router.get('/get-auth-url', getGoogleAuthUrl);
 router.post('/get-token', getGoogleToken);
 router.post('/read-drive', readGoogleDrive);
-router.get('/download-photo/:id', downloadGooglePhotos);
+router.post('/download-photo/:id', downloadGooglePhotos);
 
 module.exports = router;

@@ -5,7 +5,7 @@ const { file } = require('googleapis/build/src/apis/file');
 
 // const client = new OAuth2Client("959000517651-tpaevdgmts4gtftppmj118ci0musjg44.apps.googleusercontent.com");
 
-const SCOPES = ['https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/drive.metadata.readonly https://www.googleapis.com/auth/drive.file'];
+const SCOPES = ['https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/drive.metadata.readonly https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.readonly'];
 
 const client_id = credentials.web.client_id;
 const client_secret = credentials.web.client_secret;
@@ -90,19 +90,25 @@ exports.downloadGooglePhotos = (req, res) => {
   drive.files.get({
     fileId: filedID, 
     alt: 'media'
-  }, 
-  {
-    responseType: 'stream'
-  },
-  function(err, response) {
-    response.data.on('end', () => {
-      console.log('Done');
-    }).on('error', err => {
-      console.log('Error', err);
-    }).pipe(res);
-  });
+  }).on('end', function () {
+    console.log('Done');
+  }).on('error', function (err) {
+    console.log('Error during download', err);
+  }).pipe(res);
 }
 
+// , 
+// {
+//   responseType: 'stream'
+// },
+// function(err, response) {
+//   console.log("Error: ", err);
+//   response.data.on('end', () => {
+//     console.log('Done');
+//   }).on('error', err => {
+//     console.log('Error', err);
+//   }).pipe(res);
+// };
 
 
 
