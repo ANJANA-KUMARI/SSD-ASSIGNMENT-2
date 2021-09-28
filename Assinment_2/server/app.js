@@ -1,5 +1,4 @@
 const express = require('express');
-const googlePhotoSelectRouter = require('./routes/google-photos-select');
 const cors = require('cors');
 
 // Init App
@@ -19,5 +18,3 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
 
-// Apply Routes
-app.use('/google', googlePhotoSelectRouter);
