@@ -29,13 +29,68 @@ h4 {
 } 
 
 .google-sign-in-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: none;
+  box-shadow: 2px 2px #c8c8c8;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 0px 10px;
+  font-weight: bold;
+}
+
+.google-btn:hover, .google-btn:active {
+  background-color: #4285F4;
+  color: white;
+  box-shadow: 2px 2px #9ec3ff;
+}
+
+.google-icon {
+  width: 25px;
+  height: 25px;
+  margin-right: 20px;
+
+}
+
+.img-card {
+  width: 80px;
+  height: 80px;
+  background-color: #a3a2a2;
+  border-radius: 2px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.selected-img-card {
+  width: 80px;
+  height: 80px;
+  background-color: #a3a2a2;
+  border: 2px solid #4267B2;
+  border-radius: 2px;
+  cursor: pointer;
+  margin: 10px;
+  box-shadow: 2px 2px #4267b25b;
+}
+
+.photo-card-wrapper {
+  display: grid;
+  grid-auto-flow: row;
+  grid-gap: 10px;
+  grid-template-rows: 100px 100px 100px;
+  grid-template-columns: 100px 100px 100px;
+  padding: 10px;
+}
+
+.facebook-btn {
   color: rgb(255, 255, 255);
   border: none;
   padding: 10px;
-  background: #4285F4;
+  background: #4267B2;
   font-weight: bold;
   border-radius: 2px;
   cursor: pointer;
+  box-shadow: 2px 2px #7ba0e9e0;
 }
 
 .facebook-login-btn {

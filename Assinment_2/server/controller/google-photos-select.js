@@ -1,5 +1,6 @@
 const { OAuth2Client } = require('google-auth-library');
 const credentials = require('../client_secret.json');
+const credentials2 = require('../client_secret_2.json');
 const { google } = require('googleapis');
 const { file } = require('googleapis/build/src/apis/file');
 
@@ -7,9 +8,9 @@ const client = new OAuth2Client("128644511689-1sdmau2gitdj3mbtms7g0s67lh6g75h6.a
 
 const SCOPES = ['https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/drive.metadata.readonly https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.readonly'];
 
-const client_id = credentials.web.client_id;
-const client_secret = credentials.web.client_secret;
-const redirect_uris = credentials.web.redirect_uris;
+const client_id = credentials2.web.client_id;
+const client_secret = credentials2.web.client_secret;
+const redirect_uris = credentials2.web.redirect_uris;
 const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
 
 
@@ -36,6 +37,9 @@ exports.getGoogleAuthUrl = (req, res) => {
 }
 
 exports.getGoogleToken = (req, res) => {
+  const { code } = req.body;
+  console.log("Code:***\n" + code);
+  console.log("\n****Code:********\n" + req.body.code + "\n" );
   if(req.body.code === null) {
     return res.status(400).send('Invalid Request');
   } 
@@ -49,10 +53,12 @@ exports.getGoogleToken = (req, res) => {
 }
 
 exports.readGoogleDrive = (req, res) => {
-  if(req.body.token === null) {
+  const { token } = req.body;
+
+  if(token === null) {
     return res.status(400).send('Token not found');
   }
-  oAuth2Client.setCredentials(req.body.token);
+  oAuth2Client.setCredentials(token);
   const drive = google.drive({
     version: 'v3',
     auth: oAuth2Client,
