@@ -1,14 +1,20 @@
-import React, { useState } from 'react'
-import GoogleLogin from 'react-google-login'
+import React, { useState } from 'react';
+import GoogleLogin from 'react-google-login';
+import axios from 'axios';
 
 export default function GoogleSide() {
   const [photoUrl, setPhotoUrl] = useState('')
 
   /* Google Success Response */
   const responseSuccessGoogle = (res) => {
-    console.log('Success')
-    console.log(res.profileObj.imageUrl)
-    setPhotoUrl(res.profileObj.imageUrl)
+    console.log(res);
+    axios({
+      method: "POST",
+      url: 'http://localhost:5000/google/login',
+      data: { tokenId: res.tokenId, accessToken: res.accessToken }
+    }).then(res => {
+      setPhotoUrl(res.data.user.picture);
+    }) 
   }
 
   /* Google Fail Response */
@@ -28,12 +34,13 @@ export default function GoogleSide() {
       <div style={{ display: photoUrl.length === 0 ? 'block' : 'none' }}>
         <div className="center google-btn">
           <GoogleLogin
-            clientId="365796586806-h6fjc668m83ovro4tn2evcs2k8qmh48v.apps.googleusercontent.com"
+            clientId="365796586806-r5db3q6njc93nkaktqi44cd7c3b1o98j.apps.googleusercontent.com"
             buttonText="Sign in with Google"
             onSuccess={responseSuccessGoogle}
             onFailure={responseFailureGoogle}
             cookiePolicy={'single_host_origin'}
             theme="dark"
+            scope= "https://www.googleapis.com/auth/drive.file"
           />
         </div>
       </div>
