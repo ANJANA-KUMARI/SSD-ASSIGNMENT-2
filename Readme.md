@@ -1,4 +1,4 @@
-# Google Drive to Onedrive photo uploader with OAuth2.0 authentication
+# Google Drive to Onedrive photo uploader with OAuth 2.0 authentication
 
 ## Steps to run the app
 
