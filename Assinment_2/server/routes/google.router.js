@@ -4,7 +4,6 @@ const { OAuth2Client } = require("google-auth-library");
 const axios = require("axios");
 const { google } = require("googleapis");
 
-
 const client = new OAuth2Client(
   "365796586806-r5db3q6njc93nkaktqi44cd7c3b1o98j.apps.googleusercontent.com"
 );
@@ -29,7 +28,7 @@ router.post("/login", async (req, res) => {
         axios
           .get(
             "https://www.googleapis.com/drive/v3/files?key=" +
-              "AIzaSyCAAJh9y4Pkwh9liqWvJ6iUnTEwnDBVtPk",
+              "AIzaSyCAAJh9y4Pkwh9liqWvJ6iUnTEwnDBVtPk&q=mimeType='image/jpeg'",
             { headers }
           )
           .then((result) => {
