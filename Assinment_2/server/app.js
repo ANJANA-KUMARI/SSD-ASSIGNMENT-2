@@ -6,7 +6,7 @@ const cors = require("cors");
 const googleRouter = require("./routes/google.router");
 const onedriveRouter = require("./routes/onedrive.router");
 
-// Init App
+// init App
 const app = express();
 
 const PORT = process.env.PORT || 8000;
