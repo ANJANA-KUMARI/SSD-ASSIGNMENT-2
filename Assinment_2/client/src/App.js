@@ -8,18 +8,24 @@ function App() {
   const [files, setFiles] = useState([]);
   const [selectedFileId, setSelectedFileId] = useState(null);
 
+  // clear files and logout user
   const handleRemove = () => {
     setFiles([]);
-  }
+    localStorage.clear();
+    window.location.reload();
+  };
 
   return (
     <div className="">
-      <h1>Upload Google Profile on Facebook</h1>
+      <h1>Upload Google Photos on Onedrive</h1>
 
       <div className="container">
         <div className="w-100 d-flex justify-content-between">
-          <GoogleSide onRemove={handleRemove} setFilesList={(fileList) => setFiles(fileList)} />
-          <PostPostedSide />
+          <GoogleSide
+            onRemove={handleRemove}
+            setFilesList={(fileList) => setFiles(fileList)}
+          />
+          <PostPostedSide selectedFileId={selectedFileId} />
         </div>
         <FileList
           files={files}
@@ -32,4 +38,3 @@ function App() {
 }
 
 export default App;
-

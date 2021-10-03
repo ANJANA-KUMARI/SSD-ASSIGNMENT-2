@@ -24,7 +24,7 @@ export default function GoogleSide({ setFilesList, onRemove }) {
   const fetchProfileAndFiles = (tokenId, accessToken) => {
     axios({
       method: "POST",
-      url: "http://localhost:5000/google/login",
+      url: "http://localhost:8000/google/login",
       data: { tokenId, accessToken },
     }).then((res) => {
       setPhotoUrl(res.data.user.picture);
@@ -46,7 +46,7 @@ export default function GoogleSide({ setFilesList, onRemove }) {
 
   return (
     <div className="google-card-wrapper">
-      <h4>Google Profile to FaceBook</h4>
+      <h4>Google Photos to Onedrive</h4>
       <div style={{ display: photoUrl.length === 0 ? "block" : "none" }}>
         <div className="center google-btn">
           <GoogleLogin
@@ -56,7 +56,7 @@ export default function GoogleSide({ setFilesList, onRemove }) {
             onFailure={responseFailureGoogle}
             cookiePolicy={"single_host_origin"}
             theme="dark"
-            scope="https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.metadata https://www.googleapis.com/auth/drive.readonly"
+            scope="https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.metadata "
           />
         </div>
       </div>

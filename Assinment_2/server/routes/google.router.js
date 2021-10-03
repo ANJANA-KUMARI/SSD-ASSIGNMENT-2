@@ -2,12 +2,11 @@ const express = require("express");
 const router = express.Router();
 const { OAuth2Client } = require("google-auth-library");
 const axios = require("axios");
-const { google } = require("googleapis");
 
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 
-const client = new OAuth2Client(
-  "365796586806-r5db3q6njc93nkaktqi44cd7c3b1o98j.apps.googleusercontent.com"
-);
+const client = new OAuth2Client(GOOGLE_CLIENT_ID);
 
 router.post("/login", async (req, res) => {
   const { tokenId, accessToken } = req.body;
@@ -15,8 +14,7 @@ router.post("/login", async (req, res) => {
   client
     .verifyIdToken({
       idToken: tokenId,
-      audience:
-        "365796586806-r5db3q6njc93nkaktqi44cd7c3b1o98j.apps.googleusercontent.com",
+      audience: GOOGLE_CLIENT_ID,
     })
     .then((resp) => {
       const { email_verified, name, email, picture } = resp.payload;
@@ -29,7 +27,8 @@ router.post("/login", async (req, res) => {
         axios
           .get(
             "https://www.googleapis.com/drive/v3/files?key=" +
-              "AIzaSyCAAJh9y4Pkwh9liqWvJ6iUnTEwnDBVtPk",
+              GOOGLE_API_KEY +
+              "&q=mimeType='image/jpeg'",
             { headers }
           )
           .then((result) => {
