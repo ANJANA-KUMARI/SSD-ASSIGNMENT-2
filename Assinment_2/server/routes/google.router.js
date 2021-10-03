@@ -8,6 +8,9 @@ const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 
 const client = new OAuth2Client(GOOGLE_CLIENT_ID);
 
+/**
+ * Route handler for login and retrieving google drive images
+ */
 router.post("/login", async (req, res) => {
   const { tokenId, accessToken } = req.body;
 
@@ -23,7 +26,9 @@ router.post("/login", async (req, res) => {
           Authorization: `Bearer ${accessToken}`,
           Accept: "application/json",
         };
+        // retrieving image file from google drive
         let files = [];
+        // invoke google drive API to get all images file info
         axios
           .get(
             "https://www.googleapis.com/drive/v3/files?key=" +
@@ -32,13 +37,15 @@ router.post("/login", async (req, res) => {
             { headers }
           )
           .then((result) => {
+            // success
             files = result.data.files;
-            // console.log(result.data);
           })
           .catch((err) => {
+            // error
             console.log(err);
           })
           .finally(() => {
+            // return success to response
             return res.json({
               user: { name, email, picture },
               files,
