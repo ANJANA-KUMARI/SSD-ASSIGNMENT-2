@@ -6,14 +6,18 @@ export default function GoogleSide({ setFilesList, onRemove }) {
   const [photoUrl, setPhotoUrl] = useState("");
 
   useEffect(() => {
+    // get the access token and token id
     const token = localStorage.getItem("@googleAuth");
     const tokenId = localStorage.getItem("@googleAuthId");
+    // check if already stored access token and token id are there
     if (token && tokenId) {
       fetchProfileAndFiles(tokenId, token);
     }
   }, []);
 
-  /* Google Success Response */
+  /**
+   *  Handle google success response 
+   * */
   const responseSuccessGoogle = (res) => {
     console.log(res);
     localStorage.setItem("@googleAuth", res.accessToken);
@@ -21,6 +25,9 @@ export default function GoogleSide({ setFilesList, onRemove }) {
     fetchProfileAndFiles(res.tokenId, res.accessToken);
   };
 
+  /**
+   * Invoke backend API to get the images
+   */
   const fetchProfileAndFiles = (tokenId, accessToken) => {
     axios({
       method: "POST",
@@ -32,13 +39,15 @@ export default function GoogleSide({ setFilesList, onRemove }) {
     });
   };
 
-  /* Google Fail Response */
+  /**
+   *  Handle google fail response 
+   * */
   const responseFailureGoogle = (res) => {
     console.log("Fail");
     console.log(res);
   };
 
-  /* When the Remove Button Pressed - From Child to Parent */
+  // remove all retrieved images and redirect to the home page 
   const handleOnRemove = () => {
     setPhotoUrl("");
     onRemove();
