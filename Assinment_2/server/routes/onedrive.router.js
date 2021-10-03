@@ -3,6 +3,8 @@ const router = express.Router();
 const axios = require("axios");
 const fs = require("fs");
 
+const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
+
 /**
  * Route handler for downloading and uploading images
  */
@@ -18,7 +20,7 @@ router.post("/upload", async (req, res) => {
   try {
     // invoke google drive API to get file info
     const fileInfo = await axios.get(
-      `https://www.googleapis.com/drive/v3/files/${fileId}?key=AIzaSyCAAJh9y4Pkwh9liqWvJ6iUnTEwnDBVtPk`,
+      `https://www.googleapis.com/drive/v3/files/${fileId}?key=${GOOGLE_API_KEY}`,
       { headers }
     );
 
@@ -28,7 +30,7 @@ router.post("/upload", async (req, res) => {
     // invoke google drive API to download the file content
     axios
       .get(
-        `https://www.googleapis.com/drive/v3/files/${fileId}?key=AIzaSyCAAJh9y4Pkwh9liqWvJ6iUnTEwnDBVtPk&alt=media`,
+        `https://www.googleapis.com/drive/v3/files/${fileId}?key=${GOOGLE_API_KEY}`,
         { headers, responseType: "stream" }
       )
       .then((fileResponse) => {
